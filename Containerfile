@@ -17,3 +17,4 @@ RUN cd /app/mamba && MAMBA_FORCE_BUILD=TRUE pip install --no-build-isolation -v 
 
 # Install some useful packages
 RUN pip install pandas==2.3 numpy
+RUN pip install onnx onnxscript onnxruntime
