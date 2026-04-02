@@ -1,6 +1,7 @@
 print("Testing pytorch")
 
 import torch
+torch.backends.cudnn.enabled = False
 
 print("Cuda", torch.version.cuda)
 print("Torch", torch.version.__version__)
@@ -13,12 +14,11 @@ print(torch.cuda.get_arch_list())
 
 print("cuda available", torch.cuda.is_available())
 
-print(f'PyTorch cuDNN Version: {torch.backends.cudnn.version()}')
+# print(f'PyTorch cuDNN Version: {torch.backends.cudnn.version()}')
 
 if torch.cuda.is_available():
     print("Pytorch okay")
 
-import torch
 import torch.nn as nn
  
 # Check if CUDA is available
@@ -61,8 +61,10 @@ causal_conv1d_fn(x, weight, bias, None)
 print("Causal okay")
 print("Testing mamba")
 
+import mamba_ssm
 from mamba_ssm import Mamba
 
+print("mamba version", mamba_ssm.__version__)
 batch, length, dim = 2, 64, 16
 x = torch.randn(batch, length, dim).to("cuda")
 model = Mamba(
